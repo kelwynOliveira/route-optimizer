@@ -1,0 +1,21 @@
+services:
+  route_optimizer:
+    container_name: route_optimizer
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "8501:8501"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.route_optimizer.rule=Host(`route-optimizer.like`)"
+      - "traefik.http.routers.route_optimizer.entrypoints=web"
+      - "traefik.http.services.route_optimizer.loadbalancer.server.port=8501"
+    networks:
+      - traefik-net
+
+networks:
+  traefik-net:
+    external: true

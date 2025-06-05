@@ -2,3 +2,5 @@
 .devcontainer
 __pycache__
 .DS_Store
+.env
+secrets.toml

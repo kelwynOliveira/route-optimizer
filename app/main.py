@@ -1,18 +1,25 @@
 import streamlit as st
 from aux import *
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # --- UI ---
 st.set_page_config(page_title="Optimize Route", page_icon="🚗")
 st.title(":oncoming_automobile: Route Optimizer with Google Maps (by time)")
 
-google_maps_api_key = st.sidebar.text_input(
-  'Google Maps API key', 
-  type='password', 
-  value="", 
-  help="Enter your Google Maps API key to use the service."
-  )
+# google_maps_api_key = st.sidebar.text_input(
+#   'Google Maps API key', 
+#   type='password', 
+#   value="", 
+#   help="Enter your Google Maps API key to use the service."
+#   )
+# st.sidebar.markdown(f"[Google Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix/overview)", unsafe_allow_html=True)
 
-st.sidebar.markdown(f"[Google Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix/overview)", unsafe_allow_html=True)
+google_maps_api_key = os.getenv("GOOGLE_MAPS_API_KEY")
+
 
 st.markdown("Add addresses, choose the start and end point, and generate the best route based on estimated travel time.")
 
