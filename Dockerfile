@@ -1,7 +1,8 @@
-FROM python:3.9-alpine
+FROM python:3.9-slim
 WORKDIR /app
 COPY app/ /app/
-RUN apk add --no-cache gcc g++ musl-dev
+COPY .env /app/.env
+RUN apt-get update && apt-get install -y gcc g++ coinor-cbc && rm -rf /var/lib/apt/lists/*
 RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8501
 CMD ["streamlit", "run", "main.py"]
