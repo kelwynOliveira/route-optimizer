@@ -74,7 +74,7 @@ deactivate
 
 ## ✨ How It Works
 
-This app uses the **Google Distance Matrix API** to calculate travel times between addresses, then applies a **Linear Programming model** to find the shortest-duration route based on:
+This app uses the **[Google Routes API](https://developers.google.com/maps/documentation/routes)** to calculate travel times between addresses, then applies a **Linear Programming model** to find the shortest-duration route based on:
 
 - Start and end location
 - Selected travel mode (car, walk, bike, public transport)
