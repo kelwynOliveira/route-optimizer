@@ -5,7 +5,12 @@
 - Find the most time-efficient route between multiple locations using the Google Distance Matrix API and an optimization algorithm.
 - Supports driving, walking, biking, and public transport.
 
-Streamlit app link: [https://routes-maps.streamlit.app/](https://routes-maps.streamlit.app/)
+App link:
+Remove the labels and networks from docker-compose.yml
+[http://localhost:8501/](http://localhost:8501/)
+
+> ⚠️ using traefik
+App link: [http://route-optimizer.like/](http://route-optimizer.like/)
 
 ---
 
@@ -28,53 +33,42 @@ Streamlit app link: [https://routes-maps.streamlit.app/](https://routes-maps.str
 
 ## ⚙️ How to Run
 
-### 1️⃣ Create a virtual environment (optional but recommended)
+### 1️⃣ Clone the repo
 
-For macOS / Linux:
+Clone the repo and change branch to home-server
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
+git clone https://github.com/kelwynOliveira/route-optimizer
+git checkout home-server
 ```
 
-For Windows:
+### 2️⃣ Add a .env file
+
+change .env-example to .env
 
 ```bash
-python -m venv .venv
-.venv\Scripts\activate
+sudo mv .env-example .env
 ```
 
----
+### 3️⃣ Add your Google Routes API key
 
-### 2️⃣ Install dependencies
+Inside the `.env` add your API key
 
 ```bash
-pip install -r requirements.txt
+GOOGLE_MAPS_API_KEY=Your_API_here
 ```
 
----
-
-### 3️⃣ Run the app
+### 4️⃣ Deploy the aplication
 
 ```bash
-streamlit run main.py
-```
-
----
-
-### 4️⃣ Stop the app
-
-To deactivate the virtual environment when you're done:
-
-```bash
-deactivate
+docker-compose up -d --build
 ```
 
 ---
 
 ## ✨ How It Works
 
-This app uses the **Google Distance Matrix API** to calculate travel times between addresses, then applies a **Linear Programming model** to find the shortest-duration route based on:
+This app uses the **[Google Routes API](https://developers.google.com/maps/documentation/routes)** to calculate travel times between addresses, then applies a **Linear Programming model** to find the shortest-duration route based on:
 
 - Start and end location
 - Selected travel mode (car, walk, bike, public transport)
@@ -87,9 +81,13 @@ It supports both **circular (round-trip)** and **open (point-to-point)** route p
 
 ```
 .
-├── main.py         # Streamlit app
-├── aux.py          # Route calculation and API integration
-└── requirements.txt
+├── app/
+.     ├── main.py         # Streamlit app
+.     ├── aux.py          # Route calculation and API integration
+.     └── requirements.txt
+├── .env
+├── Dockerfile
+└── docker-compose
 ```
 
 ---
