@@ -1,6 +1,7 @@
 services:
   route_optimizer:
     container_name: route_optimizer
+    restart: unless-stopped
     build:
       context: ./
       dockerfile: ./Dockerfile
