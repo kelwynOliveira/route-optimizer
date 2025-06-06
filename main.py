@@ -12,7 +12,7 @@ google_maps_api_key = st.sidebar.text_input(
   help="Enter your Google Maps API key to use the service."
   )
 
-st.sidebar.markdown(f"[Google Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix/overview)", unsafe_allow_html=True)
+st.sidebar.markdown(f"[Google Routes API](https://developers.google.com/maps/documentation/routes)", unsafe_allow_html=True)
 
 st.markdown("Add addresses, choose the start and end point, and generate the best route based on estimated travel time.")
 
