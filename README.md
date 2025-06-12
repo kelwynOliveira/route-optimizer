@@ -10,7 +10,7 @@ Remove the labels and networks from docker-compose.yml
 [http://localhost:8501/](http://localhost:8501/)
 
 > ⚠️ using traefik
-App link: [http://route-optimizer.like/](http://route-optimizer.like/)
+> App link: [http://travel.like/](http://travel.like/)
 
 ---
 
